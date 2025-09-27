@@ -1,3 +1,4 @@
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -205,16 +206,3 @@ window.addEventListener('scroll', updateActiveNav);
 
 // Initialize active nav on page load
 document.addEventListener('DOMContentLoaded', updateActiveNav);
-
-document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll(
-        '.portfolio-item, .about-content, .contact-content, .privacy-section, .contact-info'
-    );
-
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-});
