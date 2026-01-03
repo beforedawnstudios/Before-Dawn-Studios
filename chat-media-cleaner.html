@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Media Cleaner - Free Up Storage Space</title>
+    <meta name="description" content="Chat Media Cleaner helps you reclaim storage by finding and removing duplicate and unnecessary media files from your messaging apps.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00A884;
+            --primary-dark: #075E54;
+            --accent: #00D4AA;
+            --bg-dark: #0A1A15;
+            --bg-card: #0F2620;
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255,255,255,0.7);
+            --gradient: linear-gradient(135deg, #00A884 0%, #00D4AA 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); overflow-x: hidden; }
+        
+        /* Navbar */
+        .navbar { position: fixed; top: 0; width: 100%; padding: 1rem 2rem; background: rgba(10,26,21,0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 4rem; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 20%, rgba(0,168,132,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,212,170,0.1) 0%, transparent 50%); }
+        .hero-content { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-text h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.7; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--gradient); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,168,132,0.3); }
+        
+        /* Phone Mockup */
+        .phone-mockup { position: relative; display: flex; justify-content: center; }
+        .phone { width: 280px; height: 560px; background: #1a1a1a; border-radius: 40px; padding: 10px; box-shadow: 0 50px 100px rgba(0,0,0,0.5); position: relative; }
+        .phone-screen { width: 100%; height: 100%; background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%); border-radius: 32px; overflow: hidden; padding: 1rem; }
+        .phone-header { text-align: center; padding: 1rem 0; }
+        .phone-header h3 { font-size: 1rem; color: var(--accent); }
+        .storage-ring { width: 120px; height: 120px; margin: 1rem auto; position: relative; }
+        .storage-ring svg { transform: rotate(-90deg); }
+        .storage-ring circle { fill: none; stroke-width: 10; }
+        .storage-ring .bg { stroke: rgba(255,255,255,0.1); }
+        .storage-ring .progress { stroke: url(#gradient); stroke-linecap: round; stroke-dasharray: 314; stroke-dashoffset: 94; animation: progress 2s ease-out forwards; }
+        @keyframes progress { from { stroke-dashoffset: 314; } to { stroke-dashoffset: 94; } }
+        .storage-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+        .storage-text .value { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        .storage-text .label { font-size: 0.7rem; color: var(--text-secondary); }
+        .stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem; }
+        .stat-card { background: rgba(0,168,132,0.1); border-radius: 12px; padding: 0.75rem; text-align: center; }
+        .stat-card .num { font-size: 1.2rem; font-weight: 700; color: var(--accent); }
+        .stat-card .txt { font-size: 0.65rem; color: var(--text-secondary); }
+        
+        /* Features */
+        .features { padding: 6rem 2rem; background: var(--bg-card); }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .section-title span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-sub { text-align: center; color: var(--text-secondary); margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .features-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-card { background: rgba(0,168,132,0.05); border: 1px solid rgba(0,168,132,0.2); border-radius: 20px; padding: 2rem; transition: transform 0.3s, border-color 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .feature-icon { width: 60px; height: 60px; background: var(--gradient); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+        .feature-card p { color: var(--text-secondary); line-height: 1.6; }
+        
+        /* How It Works */
+        .how-it-works { padding: 6rem 2rem; }
+        .steps { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+        .step { display: flex; gap: 2rem; align-items: center; }
+        .step-num { width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0; }
+        .step-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .step-content p { color: var(--text-secondary); }
+        
+        /* CTA */
+        .cta { padding: 6rem 2rem; text-align: center; background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%); }
+        .cta h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta p { color: var(--text-secondary); margin-bottom: 2rem; }
+        
+        /* Footer */
+        footer { padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+        .copyright { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">Chat Media Cleaner</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#download">Download</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Reclaim Your <span>Storage Space</span></h1>
+                <p>Tired of running out of storage? Chat Media Cleaner scans your messaging apps, finds duplicates, and helps you clean up gigabytes of wasted space in minutes.</p>
+                <a href="#download" class="btn-primary"><i class="fab fa-google-play"></i> Download Free</a>
+            </div>
+            <div class="phone-mockup">
+                <div class="phone">
+                    <div class="phone-screen">
+                        <div class="phone-header"><h3>Storage Analysis</h3></div>
+                        <div class="storage-ring">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <defs><linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00A884"/><stop offset="100%" stop-color="#00D4AA"/></linearGradient></defs>
+                                <circle class="bg" cx="60" cy="60" r="50"/>
+                                <circle class="progress" cx="60" cy="60" r="50"/>
+                            </svg>
+                            <div class="storage-text"><div class="value">2.4 GB</div><div class="label">Reclaimable</div></div>
+                        </div>
+                        <div class="stat-cards">
+                            <div class="stat-card"><div class="num">1,247</div><div class="txt">Files Found</div></div>
+                            <div class="stat-card"><div class="num">89</div><div class="txt">Duplicates</div></div>
+                            <div class="stat-card"><div class="num">4</div><div class="txt">Categories</div></div>
+                            <div class="stat-card"><div class="num">5.2 GB</div><div class="txt">Total Media</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Powerful <span>Features</span></h2>
+        <p class="section-sub">Everything you need to keep your device clean and running smoothly.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-search"></i></div>
+                <h3>Smart Scanning</h3>
+                <p>Intelligently scans WhatsApp, Telegram, and other chat apps to find all media files.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-clone"></i></div>
+                <h3>Duplicate Detection</h3>
+                <p>Advanced algorithms find duplicate files wasting your precious storage space.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Storage Analytics</h3>
+                <p>Beautiful visualizations show exactly where your storage is being used.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-filter"></i></div>
+                <h3>Smart Filters</h3>
+                <p>Filter by type, size, date, or source to find exactly what you're looking for.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Safe Deletion</h3>
+                <p>Preview files before deleting. Nothing is removed without your approval.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized scanning engine processes thousands of files in seconds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">How It <span>Works</span></h2>
+        <p class="section-sub">Clean up your storage in three simple steps.</p>
+        <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Scan Your Device</h3><p>Tap scan and let the app analyze all media files from your messaging apps.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Review Results</h3><p>See a detailed breakdown of your storage usage and identify files to remove.</p></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Clean & Save</h3><p>Select unwanted files and reclaim gigabytes of storage instantly.</p></div></div>
+        </div>
+    </section>
+
+    <section class="cta" id="download">
+        <h2>Ready to Free Up Space?</h2>
+        <p>Download Chat Media Cleaner today and reclaim your storage.</p>
+        <a href="#" class="btn-primary"><i class="fab fa-google-play"></i> Get it on Google Play</a>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2026 Before Dawn Studios. All rights reserved.</p>
+    </footer>
+</body>
+</html>
