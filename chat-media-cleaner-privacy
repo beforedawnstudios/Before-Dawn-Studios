@@ -239,9 +239,74 @@
         </p>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2026 Before Dawn Studios. All rights reserved.</p>
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <h2>Before Dawn Studios</h2>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
     </div>
+</nav>
+
+<section class="about">
+    <div class="container">
+        <h1 class="section-title">Privacy Policy</h1>
+
+        <p><strong>Last updated:</strong> January 2026</p>
+
+        <h2>Introduction</h2>
+        <p>
+            This Privacy Policy describes how <strong>Chat Media Cleaner</strong> ("the app")
+            handles user information. The app is designed with privacy as a core principle and
+            operates entirely on the user’s device.
+        </p>
+
+        <h2>Information We Collect</h2>
+        <p>The app does <strong>not</strong> collect, store, or transmit any personal data.</p>
+        <ul>
+            <li>No names, phone numbers, contacts, or account information</li>
+            <li>No messages, chats, or conversation content</li>
+            <li>No location data</li>
+            <li>No device identifiers or advertising IDs</li>
+        </ul>
+
+        <h2>Local File Access</h2>
+        <p>
+            The app accesses media files stored on your device (such as images, videos, audio,
+            and documents) solely to display file information and allow manual deletion.
+        </p>
+
+        <h2>Permissions</h2>
+        <p>
+            Storage permissions are requested only to scan and manage files selected by the user.
+        </p>
+
+        <h2>Data Sharing</h2>
+        <p>The app does not share data with third parties or remote servers.</p>
+
+        <h2>Internet Usage</h2>
+        <p>The app works fully offline.</p>
+
+        <h2>Children’s Privacy</h2>
+        <p>The app does not collect personal data from users of any age.</p>
+
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> contact@beforedawnstudios.com</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Before Dawn Studios. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
 
 </div>
 
