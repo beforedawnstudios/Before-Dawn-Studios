@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Media Cleaner – Privacy Policy</title>
+    <meta name="description" content="Privacy Policy for Chat Media Cleaner. The app does not collect or share personal data and processes all files locally on the device.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Before Dawn Studios</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="about">
+        <div class="container">
+            <h1 class="section-title">Privacy Policy</h1>
+
+            <p><strong>Last updated:</strong> [add date]</p>
+
+            <h2>Introduction</h2>
+            <p>
+                This Privacy Policy describes how <strong>Chat Media Cleaner</strong> (“the app”)
+                handles user information. The app is designed with privacy as a core principle and
+                operates entirely on the user’s device.
+            </p>
+
+            <h2>Information We Collect</h2>
+            <p>The app does <strong>not</strong> collect, store, or transmit any personal data.</p>
+            <ul>
+                <li>No names, phone numbers, contacts, or account information</li>
+                <li>No messages, chats, or conversation content</li>
+                <li>No location data</li>
+                <li>No device identifiers or advertising IDs</li>
+            </ul>
+
+            <h2>Local File Access</h2>
+            <p>
+                The app accesses media files stored on your device (such as images, videos, audio,
+                and documents) solely to:
+            </p>
+            <ul>
+                <li>Display file information (name, size, date)</li>
+                <li>Allow users to review and manually delete selected files</li>
+            </ul>
+            <p>
+                All file processing happens <strong>locally on your device</strong>.
+                No file data is uploaded, shared, or transmitted.
+            </p>
+
+            <h2>Permissions</h2>
+            <p>
+                The app requests storage access permissions only to scan and manage media files
+                selected by the user. These permissions are used strictly for the app’s core
+                functionality.
+            </p>
+
+            <h2>Data Sharing</h2>
+            <p>The app does not:</p>
+            <ul>
+                <li>Share data with third parties</li>
+                <li>Use analytics SDKs</li>
+                <li>Use advertising SDKs</li>
+                <li>Send data to remote servers</li>
+            </ul>
+
+            <h2>Internet Usage</h2>
+            <p>
+                The app does not require an internet connection. All features work fully offline.
+            </p>
+
+            <h2>Data Security</h2>
+            <p>
+                Because no personal data is collected or transmitted, there is no external storage
+                of user data. All actions remain under the user’s control on their own device.
+            </p>
+
+            <h2>Children’s Privacy</h2>
+            <p>
+                The app does not collect personal information from users of any age and complies
+                with applicable child privacy regulations.
+            </p>
+
+            <h2>Changes to This Policy</h2>
+            <p>
+                This Privacy Policy may be updated if the app’s functionality changes. Any updates
+                will be reflected on this page.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                If you have questions about this Privacy Policy, you may contact us at:
+            </p>
+            <p>
+                <strong>Email:</strong> contact@beforedawnstudios.com
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Before Dawn Studios. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
